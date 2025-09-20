@@ -1,6 +1,20 @@
 import numpy as np
 
-#E/e: Usado para representar o não terminal
+coluna1 = []
+coluna2 = []
+
+def processarLinha(linha):
+    pos = linha.find(' ') #Procura pelo espaço dentro da string.
+    substring1 = linha[0:pos] #Pega a primeira parte (até a seta) da string linha.
+    substring2 = linha[pos+1:len(linha)] #Pega a segunda parte (depois da seta) da string linha.
+    coluna1.append(substring1)
+    coluna2.append(substring2)
+
+def lerArquivo():
+    with open("arquivo.txt", "r") as arqGram:
+        for linha in arqGram:
+            linha.rstrip() #Remove caracteres do lado direito da string (Ex: \n)
+            processarLinha(linha)
 
 def tipo0(coluna1, coluna2):
     for i in range(len(coluna1)):
