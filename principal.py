@@ -11,7 +11,7 @@ def processarLinha(linha):
 def lerArquivo():
     with open("arquivo.txt", "r") as arqGram:
         for linha in arqGram:
-            linha.rstrip() #Remove caracteres do lado direito da string (Ex: \n)
+            linha = linha.rstrip() #Remove caracteres do lado direito da string (Ex: \n)
             processarLinha(linha)
     print("Arquivo lido com sucesso!")
 
@@ -69,7 +69,7 @@ def tipo_gramatica(coluna1, coluna2):
     tipo_gramatica = -1
     if tipo0(coluna1, coluna2) == True:
         tipo_gramatica = 0
-        print("É tipo 0")
+        print("\nÉ tipo 0")
     if tipo1(coluna1, coluna2) == True:
         tipo_gramatica = 1
         print("É tipo 1")
@@ -102,6 +102,8 @@ def main():
         
         if opcao == 1:
             lerArquivo()
+            print(coluna1)
+            print(coluna2)
         elif opcao == 2:
             print("\nSua gramática é do tipo " + str(tipo_gramatica(coluna1, coluna2)))
         elif opcao == 3:
