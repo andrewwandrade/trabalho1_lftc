@@ -1,5 +1,3 @@
-import numpy as np
-
 coluna1 = []
 coluna2 = []
 
@@ -15,6 +13,7 @@ def lerArquivo():
         for linha in arqGram:
             linha.rstrip() #Remove caracteres do lado direito da string (Ex: \n)
             processarLinha(linha)
+    print("Arquivo lido com sucesso!")
 
 def tipo0(coluna1, coluna2):
     for i in range(len(coluna1)):
@@ -49,7 +48,7 @@ def tipo3(coluna1, coluna2):
         #Caso 1:
         #Verifica se possui apenas 1 elemento não terminal do lado direito da seta.
         if(sum(1 for c in coluna2[i] if c.isupper()) == 1):
-            tamColuna2 = len(coluna2[i])
+            tamColuna2 = (len(coluna2[i])) - 1
             #Verifica se esse elemento não terminal está na última posição da string.
             if((coluna2[i][tamColuna2]).isupper()):
                 return True
@@ -70,10 +69,44 @@ def tipo_gramatica(coluna1, coluna2):
     tipo_gramatica = -1
     if tipo0(coluna1, coluna2) == True:
         tipo_gramatica = 0
+        print("É tipo 0")
     if tipo1(coluna1, coluna2) == True:
         tipo_gramatica = 1
+        print("É tipo 1")
     if tipo2(coluna1, coluna2) == True:
         tipo_gramatica = 2
+        print("É tipo 2")
     if tipo3(coluna1, coluna2) == True:
-        tipo_gramatica = 4
+        tipo_gramatica = 3
+        print("É tipo 3")
     return tipo_gramatica
+
+############################################################################
+
+def main():
+    print("Olá, Usuário!\n")
+    print("Para o correto uso do programa, insira a gramática a ser lida sem setas, como exemplificado no formato abaixo:\n")
+    print("S aS\n" \
+          "S bS\n" \
+          "S e")
+    
+    bool_menu = True
+
+    while bool_menu:
+        print("\n====MENU====\n")
+        print("[1] Ler arquivo")
+        print("[2] Verificar tipo da gramática")
+        print("[3] Sair")
+        
+        opcao = int(input("\nDigite a opção: "))
+        
+        if opcao == 1:
+            lerArquivo()
+        elif opcao == 2:
+            print("\nSua gramática é do tipo " + str(tipo_gramatica(coluna1, coluna2)))
+        elif opcao == 3:
+            bool_menu = False
+        else: 
+            print("\nOpção inválida!\n")
+
+main()
