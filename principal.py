@@ -17,21 +17,12 @@ def lerArquivo():
             processarLinha(linha)
     print("Arquivo lido com sucesso!")
 
-def tipo0(coluna1, coluna2):
-    for i in range(len(coluna1)):
-        if len(coluna1[i]) > len(coluna2[i]):
-            if coluna2[i] == 'E':
-                for j in range(len(coluna2)):
-                    if coluna1[i] not in coluna1[j] and i != j:
-                        return True
-            return False
-    return True
-
 def tipo1(coluna1, coluna2):
     for i in range(len(coluna1)):
-        for j in range(len(coluna1[i])):
-            if coluna1[i][j].islower():
-                return False
+        if len(coluna1[i]) > len(coluna2[i]):
+            return False
+        if coluna2[i] == 'E' and coluna1[i] != 'S':
+            return False
     return True
 
 def tipo2(coluna1,coluna2):
@@ -43,7 +34,7 @@ def tipo2(coluna1,coluna2):
         if len(coluna2[i]) == 2:
             if coluna2[i][1].islower():
                 return False
-#fazer ao contrario e colocar um not, muito mais fácil
+    return True
     
 def tipo3(coluna1, coluna2):
     for i in range(len(coluna1)):
@@ -71,10 +62,8 @@ def tipo3(coluna1, coluna2):
 
 def tipo_gramatica(coluna1, coluna2):
 
-    tipo_gramatica = -1
-    if tipo0(coluna1, coluna2) == True:
-        tipo_gramatica = 0
-        print("\nÉ tipo 0")
+    tipo_gramatica = 0
+    print("\nÉ tipo 0")
     if tipo1(coluna1, coluna2) == True:
         tipo_gramatica = 1
         print("É tipo 1")
