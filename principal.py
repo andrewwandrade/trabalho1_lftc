@@ -58,7 +58,7 @@ def tipo_gramatica(coluna1, coluna2):
     if tipo1(coluna1, coluna2) == True:
         tipo_gramatica = 1
         print("É tipo 1")
-    if tipo2(coluna1, coluna2) == True:
+    if tipo2(coluna1) == True:
         tipo_gramatica = 2
         print("É tipo 2")
     if tipo3(coluna1, coluna2) == True:
