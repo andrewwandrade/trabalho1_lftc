@@ -44,7 +44,7 @@ def tipo3(coluna1,coluna2):
         if len(coluna2[i]) > 2:
             return False 
         if len(coluna2[i]) == 2:
-            if coluna2[i][1].islower():
+            if coluna2[i][1].islower() or (coluna2[i][0].isupper() and coluna2[i][1].isupper()):
                 return False
         if len(coluna2[i]) == 1:
             if coluna2[i].isupper() and coluna2[i] != 'E':
