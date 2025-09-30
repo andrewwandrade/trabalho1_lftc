@@ -2,18 +2,18 @@ coluna1 = []
 coluna2 = []
 
 def processarLinha(linha):
-    pos = linha.find(' ') 
-    substring1 = linha[0:pos]
-    substring2 = linha[pos+1:len(linha)]
+    pos = linha.find(' ') #Procura pelo espaço dentro da string.
+    substring1 = linha[0:pos] #Pega a primeira parte (até a seta) da string linha.
+    substring2 = linha[pos+1:len(linha)] #Pega a segunda parte (depois da seta) da string linha.
     coluna1.append(substring1)
     coluna2.append(substring2)
 
 def lerArquivo():
-    coluna1.clear() 
+    coluna1.clear() #Para quando o usuário insere outra gramática sem reiniciar o programa.
     coluna2.clear()
     with open("arquivo.txt", "r") as arqGram:
         for linha in arqGram:
-            linha = linha.rstrip()
+            linha = linha.rstrip() #Remove caracteres do lado direito da string (Ex: \n)
             processarLinha(linha)
     print("Arquivo lido com sucesso!")
 
@@ -22,19 +22,18 @@ def tipo1(coluna1, coluna2):
         if len(coluna1[i]) > len(coluna2[i]):
             return False
         if coluna2[i] == 'E':
-            if coluna1[i] != 'S':
-                return False
-            for j in range(len(coluna1)):
-                if 'S' in coluna2[j]:
+            for j in range(len(coluna2)):
+                if coluna1[i] in coluna2[j]:
                     return False
             continue
     return True
-
+    
 def tipo2(coluna1):
     for i in range(len(coluna1)):
-        for j in range(len(coluna1[i])):
-            if coluna1[i][j].islower():
-                return False
+        if(len(coluna1[i])!=1):
+            return False
+        elif coluna1[i].islower():
+            return False
     return True
 
 def tipo3(coluna1,coluna2):
